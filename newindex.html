@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Book Review Website</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Welcome to the Book Review Website</h1>
+        <div id="bookList"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+styles.css:
+
+css
+Copy code
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#app {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+/* Add more styles as needed */
+app.js:
+
+javascript
+Copy code
+document.addEventListener('DOMContentLoaded', function () {
+    const bookList = document.getElementById('bookList');
+
+    // Dummy data for demonstration
+    const books = [
+        { title: 'Book 1', author: 'Author 1', rating: 4.5 },
+        { title: 'Book 2', author: 'Author 2', rating: 3.8 },
+        // Add more books as needed
+    ];
+
+    books.forEach(book => {
+        const bookItem = document.createElement('div');
+        bookItem.classList.add('book-item');
+        bookItem.innerHTML = `<h2>${book.title}</h2>
+                              <p>Author: ${book.author}</p>
+                              <p>Rating: ${book.rating}</p>`;
+        bookList.appendChild(bookItem);
+    });
+});
+//style
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight
+//script
+document.addEventListener('DOMContentLoaded', function() {
+    const reviewForm = document.getElementById('reviewForm');
+    const bookList = document.getElementById('bookList');
+
+    reviewForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const title = this.bookTitle.value;
+        const author = this.author.value;
+        const review = this.review.value;
+
+        const reviewItem = document.createElement('article');
+        reviewItem.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Author:</strong> ${author}</p>
+            <p><strong>Review:</strong> ${review}</p>
+        `;
+        bookList.appendChild(reviewItem);
+
+        this.reset();
+    });
+});
